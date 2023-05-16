@@ -2,9 +2,33 @@
 
 This is a project by Tulani Bango to implement and expose an algorithm that counts the **number of anagrams** found within the **included dictionary** for all **word lengths** in the dictionary.txt file.
 
+
+
 This document will break down how the application was built. The application is a two-tier architecture. The languages that the application was built in are Java (Backend) and react-js framework(Frontend). The following is how I created the application:
 
+## Complete Task
+
+*   Check for anagrams of the same length and how many they are
+*   Computation time in ms
+*   Add a word
+*   fetch all the words
+*   Sort the Characters
+*   Host to cloud(frontend)
+*   pagination
+
+## Issues
+
+*   Api connection to the backend
+*   Uploading backend to the cloud (Aws & Heroku)
+
+## Incomplete Task
+
+*   Search/retrieve for an anagram of the given word
+*   Persistence
+*   caching
+*   Saving a word 
 **Architecture**
+
 
 ![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/700d0ee5badb062d07f33b717f6832f2b9a03e171d163629.png)
 
