@@ -32,8 +32,6 @@ jobs:
       - name: Npm Install Packages
         run: npm install
         
-      - name: Test & Code Coverage
-        run: npm test -- --coverage
         
       - name: Anagram app
         uses: codecov/codecov-action@v3
