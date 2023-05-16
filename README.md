@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+## Anagram Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a project by Tulani Bango to implement and expose an algorithm that counts the **number of anagrams** found within the **included dictionary** for all **word lengths** in the dictionary.txt file.
 
-## Available Scripts
+This document will break down how the application was built. The application is a two-tier architecture. The languages that the application was built in are Java (Backend) and react-js framework(Frontend). The following is how I created the application:
 
-In the project directory, you can run:
+**Architecture**
 
-### `npm start`
+![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/700d0ee5badb062d07f33b717f6832f2b9a03e171d163629.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Installation**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+*   Frontend installation
+    *   Node js
+    *   Axios, Bootstrap
+*   Backend installation
+    *   Java 20
+    *   Dependencies : Springboot, projectlombok
 
-### `npm test`
+**Backend- algorithm**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```plaintext
+#//        try block reads line by line and trims .  If line equals the lentgh wanted then the characters are sorted, stored as key in map object.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource.getInputStream()))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (line.length() == length) {
+                    char[] chars = line.toCharArray();
+                    Arrays.sort(chars);
+                    String sortedLine = new String(chars);
+                    countMap.put(sortedLine, countMap.getOrDefault(sortedLine, 0) + 1);
+                }
+            }
+        }
+```
