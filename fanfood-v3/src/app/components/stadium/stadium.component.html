@@ -1,0 +1,15 @@
+<ion-item lines="none">
+  <ion-thumbnail slot="start">
+    <img [src]="stadium?.cover? stadium.cover:'../../../assets/images.jpeg' " />
+  </ion-thumbnail>
+  <ion-label>
+    <h4>{{stadium?.name }}</h4>
+    <ion-text color="medium">
+
+      <p class="location-address"> <ion-icon name="location"></ion-icon>{{stadium?.stadiumLocation }}</p>
+    </ion-text>
+    <ion-text color="primary">
+      <p class="location-distance">{{stadium?.distance | number:'0.0-2'}} km</p>
+    </ion-text>
+  </ion-label>
+</ion-item>

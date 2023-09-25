@@ -1,0 +1,49 @@
+.stadium-banner{
+    border: 2px solid yellow;
+    width: 100dvw;
+    height: 40dvh;
+    .big-image{
+        width: 100dvw;
+        height: 25dvh;
+        img{width:99dvw; height: 25dvh;}
+    }
+    .small-image{
+        display:flex;
+        flex-direction: column;
+        img{border:5px solid white; border-radius: 100px;width:80px; height: 80px; position: relative;margin-top: -10%; margin-left: 1%;}
+        // .stadium-details{position: relative;display: flex; }  
+    }
+    .stadium-details{
+        display: flex;
+        height: auto;
+        justify-content: space-evenly;
+        .stadium-description{
+            width:70%;
+            display: flex;
+            border:2px solid green;
+            flex-direction: column;
+            justify-content: space-between;
+            .stadium-text{
+                margin-top: 1%;
+                padding-top: 1%;
+            }
+        }
+        .chat-btn{ width:29%; color: white; height: 70%;padding:3%}
+    
+    }
+
+}
+ion-grid{
+    border: 2px solid white;
+    ion-row{
+        border:2px solid blue;
+        display: flex;
+        justify-content: center;
+    }
+}
+ion-thumbnail {
+    justify-content: center;
+    display: flex;
+    --size: 100px;
+    --border-radius: 14px;
+}

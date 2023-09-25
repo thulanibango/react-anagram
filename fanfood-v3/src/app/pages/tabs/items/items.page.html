@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title mode="md">
+      <span>Stadium name</span>
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-row class="borderBottom">
+    <div class="stadium-banner">
+      <div class="big-image">
+        <img src="../../../../assets/download (3).jpeg">
+      </div>
+      <div class="small-image">
+        <img src="../../../../assets/images (1).jpeg" alt="">
+      </div>
+      <ion-label class="stadium-details">
+        <ion-item class="stadium-description">
+          <ion-text class="stadium-text" color="medium">
+            <p class="location-address"> <ion-icon name="location"></ion-icon>Location</p>
+            <p class="location-address"> 228 Members</p>
+            <p class="location-distance">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+          </ion-text>
+          <!-- <ion-text color="primary">
+          </ion-text> -->
+        </ion-item>
+        <ion-button class="chat-btn" shape="round">Join </ion-button>
+      </ion-label> 
+    </div>
+  </ion-row>
+<ion-grid>
+  <ion-header>Food Trucks</ion-header>
+  <ion-row>
+    <ion-col>
+      <ion-thumbnail [routerLink]="['/', 'trucks', '1' ]">
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+      </ion-thumbnail>
+      <ion-text>hello</ion-text>
+    </ion-col>
+    <ion-col>
+      <ion-thumbnail [routerLink]="['/', 'trucks', '2' ]">
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+      </ion-thumbnail>
+      <ion-text>hello</ion-text>
+    </ion-col>
+    <ion-col>
+      <ion-thumbnail>
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+      </ion-thumbnail>
+      <ion-text>hello</ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-thumbnail>
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+      </ion-thumbnail>
+      <ion-text>hello</ion-text>
+    </ion-col>
+    <ion-col>
+      <ion-thumbnail>
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+      </ion-thumbnail>
+      <ion-text>hello</ion-text>
+    </ion-col>
+    
+    <ion-col>
+      <ion-thumbnail>
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+      </ion-thumbnail>
+      <ion-text>hello</ion-text>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

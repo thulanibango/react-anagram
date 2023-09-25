@@ -1,0 +1,42 @@
+ion-item {
+    .grid-container-two {
+        margin-top: 3%;
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+        gap: 5px;
+        width: 100dvw;
+        grid-auto-rows: minmax(100px, auto);
+        .grid-item-two {
+            text-align: center;
+            ion-thumbnail {
+                --size: 170px;
+                --border-radius: 14px;
+            }
+            .bottom{
+                display: flex;
+                flex-direction: column;
+                .bottom-details{
+                    display: flex;
+                    margin-left: 1%;
+                    justify-content: space-between;
+                    align-items: center;
+
+                }
+                .bottom-actions{
+                    display: flex;
+                    flex-direction: horizontal;
+                    justify-content: space-between;
+                    align-items: center;
+                    .rating{
+                        display: flex;
+                        align-items: center;
+                        p{
+                            margin-left: 1%;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

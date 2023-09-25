@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title mode="md">
+      <span>Home</span>
+      <ion-icon name="chevron-down-outline"></ion-icon>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-toggle color="secondary" (ionChange)="toggleChange($event)" ></ion-toggle>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="isLoading"  ><ion-skeleton-text animated style="height:45dvh ;"></ion-skeleton-text></div>
+  <app-loading-stadium *ngIf="isLoading"></app-loading-stadium>
+
+  <app-banner *ngIf="!isLoading" [bannerImages]="banners"></app-banner>
+
+  <ion-list *ngIf="!isLoading">
+    <ion-list-header class="ion-margin-bottom">
+      <ion-label>
+        <h4>Stadiums Nearby</h4>
+        <p>Discover stadiums nearby</p>
+      </ion-label> 
+    </ion-list-header>
+    <ion-item-group *ngIf="stadium.length > 0">
+      <!-- <app-stadium *ngIf="!isLoading"[stadium]="stadium"></app-stadium> -->
+      <app-stadium *ngFor="let stadium of stadium" [stadium]="stadium" [routerLink]="['/', 'stadium', stadium.uid ]"></app-stadium>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

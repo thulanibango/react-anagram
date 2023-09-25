@@ -1,0 +1,38 @@
+
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-searchbar animated="true" #searchInput placeholder="Search for Stadium" debounce="800"
+        (ionChange)="onSearchChange($event)"></ion-searchbar>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ng-container *ngIf="isLoading">
+    <app-loading-stadium></app-loading-stadium>
+  </ng-container>
+
+  <ng-container *ngIf="!isLoading && (stadiums?.length === 0 || query?.length === 0)">
+    <!-- <app-empty-screen [model]="model"></app-empty-screen> -->
+    <app-stadium *ngFor="let stadium of stadiums" [stadium]="stadium"></app-stadium>
+
+  </ng-container>
+
+  <ng-container *ngIf="!isLoading && stadiums.length > 0">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <h4>Search results for stadium "{{query}}"</h4>
+        </ion-label>
+      </ion-list-header>
+      <app-stadium *ngFor="let stadium of stadiums" [stadium]="stadium"></app-stadium>
+    </ion-list>
+  </ng-container>
+
+  <!-- Conditionally render app-stadium based on isLoading and search results -->
+  <app-stadium *ngIf="!isLoading && (!stadiums || stadiums.length === 0) && query?.length === 0" [stadium]="stadiums"></app-stadium>
+</ion-content>
+

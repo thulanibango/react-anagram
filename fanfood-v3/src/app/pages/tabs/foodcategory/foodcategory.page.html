@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{data[0]?.restName}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" >
+  <ion-list>
+    <ion-item>
+      <div class="grid-container-two">
+        <div class="grid-item-two" *ngFor="let item of items">
+          <ion-thumbnail>
+            <img alt="Silhouette of mountains" [src]="item?.cover ? item?.cover : 'https://ionicframework.com/docs/img/demos/thumbnail.svg' " lazy-loading/>
+          </ion-thumbnail>
+          <div class="bottom">
+            <div class="bottom-details">
+              <p>{{item?.menuItem}}</p>
+              <p>R {{item?.price}}</p>
+            </div>
+            <div class="bottom-actions">
+              <div class="rating">
+                <li><ion-icon icon="star"></ion-icon></li>
+                <p>{{item?.rating}}</p>
+              </div>
+              <ion-row>
+                <ion-icon color="danger" class="remove-outline"></ion-icon>
+                <ion-text class="ion-test-center quantity">1</ion-text>
+                <ion-icon color="success" name="add-outline"></ion-icon>
+              </ion-row>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </ion-item>
+  </ion-list>
+  
+  <ion-footer>
+    <ion-toolbar color="primary">
+      <ion-label>hello</ion-label>
+      <ion-text>
+        <p>Extra changes may Apply</p>
+      </ion-text>
+      <ion-button slot="end" >
+        <ion-icon slot="end" name="basket-outline"></ion-icon> Pay
+      </ion-button>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
+
+
