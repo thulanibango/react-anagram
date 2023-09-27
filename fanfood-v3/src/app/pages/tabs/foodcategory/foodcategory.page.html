@@ -11,7 +11,7 @@
   <ion-list>
     <ion-item>
       <div class="grid-container-two">
-        <div class="grid-item-two" *ngFor="let item of items">
+        <div class="grid-item-two" *ngFor="let item of items; let i=index;">
           <ion-thumbnail>
             <img alt="Silhouette of mountains" [src]="item?.cover ? item?.cover : 'https://ionicframework.com/docs/img/demos/thumbnail.svg' " lazy-loading/>
           </ion-thumbnail>
@@ -25,10 +25,13 @@
                 <li><ion-icon icon="star"></ion-icon></li>
                 <p>{{item?.rating}}</p>
               </div>
-              <ion-row>
-                <ion-icon color="danger" class="remove-outline"></ion-icon>
-                <ion-text class="ion-test-center quantity">1</ion-text>
-                <ion-icon color="success" name="add-outline"></ion-icon>
+              <ion-row *ngIf="item?.quantity<=0" (click)="quantityPlus(item, i)">
+                <ion-text ><p>Buy </p></ion-text>
+              </ion-row>
+              <ion-row *ngIf="item?.quantity >0">
+                <ion-icon color="danger" name="remove-outline" (click)="quantityMinus(item, i)"></ion-icon>
+                <ion-text class="ion-test-center quantity">{{item?.quantity}}</ion-text>
+                <ion-icon color="success" name="add-outline" (click)="quantityPlus(item, i)"></ion-icon>
               </ion-row>
             </div>
           </div>
@@ -38,13 +41,13 @@
     </ion-item>
   </ion-list>
   
-  <ion-footer>
+  <ion-footer *ngIf="cartData?.totalItem > 0" class="cart-section">
     <ion-toolbar color="primary">
-      <ion-label>hello</ion-label>
+      <ion-label>{{cartData?.totalItem}} Item<span *ngIf="cartData?.totalItem >  1">s</span> | {{cartData?.totalPrice}}</ion-label>
       <ion-text>
         <p>Extra changes may Apply</p>
       </ion-text>
-      <ion-button slot="end" >
+      <ion-button slot="end" (click)="viewCart()">
         <ion-icon slot="end" name="basket-outline"></ion-icon> Pay
       </ion-button>
     </ion-toolbar>
