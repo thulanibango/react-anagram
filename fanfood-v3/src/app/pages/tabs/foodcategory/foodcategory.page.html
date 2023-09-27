@@ -41,9 +41,10 @@
     </ion-item>
   </ion-list>
   
-  <ion-footer *ngIf="cartData?.totalItem > 0" class="cart-section">
+  <ion-footer *ngIf="cartData?.totalItem > 0" >
     <ion-toolbar color="primary">
-      <ion-label>{{cartData?.totalItem}} Item<span *ngIf="cartData?.totalItem >  1">s</span> | {{cartData?.totalPrice}}</ion-label>
+      <ion-label>{{cartData?.totalItem}} Item<span *ngIf="cartData?.totalItem >  1">s</span> |
+        {{cartData?.totalPrice}}</ion-label>
       <ion-text>
         <p>Extra changes may Apply</p>
       </ion-text>
@@ -53,5 +54,6 @@
     </ion-toolbar>
   </ion-footer>
 </ion-content>
+
 
 

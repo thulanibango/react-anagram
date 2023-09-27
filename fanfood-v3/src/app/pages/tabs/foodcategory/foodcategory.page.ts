@@ -10,14 +10,16 @@ import { NavController } from '@ionic/angular';
 export class FoodcategoryPage implements OnInit {
   data : any = {}
   cartData: any = {}
+  cart: any
+  storeData : any
   items : any= [ 
     {uid:'1',cover:'./../../../../assets/burger1.jpeg', menuItem:'burger1', restName: 'burgerjoint', category: 'burgers', price: 30.2, rating:'1', quantity:0},
       {uid:'2',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:2},
-      {uid:'2',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:2},
-      {uid:'2',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:2},
-      {uid:'2',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:2},
-      {uid:'2',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:2},
-      {uid:'3',cover:'./../../../../assets/burger3.jpeg', menuItem:'burger1', restName: 'burgerjoint', category: 'burgers3', price: 30.2, rating: '3', quantity:2}
+      {uid:'3',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:2},
+      {uid:'4',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:2},
+      {uid:'5',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:2},
+      {uid:'6',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:2},
+      {uid:'7',cover:'./../../../../assets/burger3.jpeg', menuItem:'burger1', restName: 'burgerjoint', category: 'burgers3', price: 30.2, rating: '3', quantity:2}
   ];
 
   resturants :any[]=
@@ -50,12 +52,32 @@ export class FoodcategoryPage implements OnInit {
     this.geFoodItem();
     console.log(this.geFoodItem())
   }
-  geFoodItem(){
+
+  getCart(){
+    // return Preferences.get({key:"cart"});
+    return localStorage.getItem('cart');
+
+  }
+  async geFoodItem(){
     this.data = {}
     this.cartData ={}
+    this.storeData={}
     this.data = this.resturants.filter(x=> x.uid===this.id)
     // this.items = this.resturants.filter(x=> x.uid ===this.id)
     console.log(this.data)
+    this.cart = await this.getCart()
+    let jsonCart = JSON.parse(this.cart)
+    console.log(jsonCart)
+    if(jsonCart?.items){
+      // this.storeData =JSON.parse(cart.items);
+      this.storeData = jsonCart?.items
+      console.log(this.storeData)
+      // if(this.id ===  this.storeData.Map((x)=> x.id) && this.items.length > 0){
+      //   this.items.forEach
+
+      // }
+
+    }
     return this.data ;
   }
 
@@ -121,7 +143,9 @@ export class FoodcategoryPage implements OnInit {
     try {
       this.cartData.food ={}
       this.cartData.food = this.data;
-      console.log("Cart Data", this.cartData)
+      console.log("Cart Data", this.cartData);
+      localStorage.setItem('cart', JSON.stringify(this.cartData));
+      // await Preferences.set({key: 'cart', value: JSON.stringify(this.cartData)})
     } catch (error) {
       console.log(error)
       
