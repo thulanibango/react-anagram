@@ -7,37 +7,8 @@ ion-item {
         width: 100dvw;
         grid-auto-rows: minmax(100px, auto);
         .grid-item-two {
-            text-align: center;
-            ion-thumbnail {
-                --size: 170px;
-                --border-radius: 14px;
-            }
-            .bottom{
-                display: flex;
-                flex-direction: column;
-                .bottom-details{
-                    display: flex;
-                    margin-left: 1%;
-                    justify-content: space-between;
-                    align-items: center;
-
-                }
-                .bottom-actions{
-                    display: flex;
-                    flex-direction: horizontal;
-                    justify-content: space-between;
-                    align-items: center;
-                    .rating{
-                        display: flex;
-                        align-items: center;
-                        p{
-                            margin-left: 1%;
-                        }
-
-                    }
-                }
-            }
-        }
+                text-align: center;}
     }
 }
+
 ion-footer{position: fixed;bottom: 0;margin-bottom: 0;}

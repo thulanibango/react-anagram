@@ -7,13 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { FoodcategoryPageRoutingModule } from './foodcategory-routing.module';
 
 import { FoodcategoryPage } from './foodcategory.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FoodcategoryPageRoutingModule
+    FoodcategoryPageRoutingModule, 
+    ComponentsModule
+    
   ],
   declarations: [FoodcategoryPage]
 })

@@ -8,35 +8,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" >
+  <app-loading-trucks *ngIf="isLoading"></app-loading-trucks>
+
   <ion-list>
     <ion-item>
       <div class="grid-container-two">
         <div class="grid-item-two" *ngFor="let item of items; let i=index;">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" [src]="item?.cover ? item?.cover : 'https://ionicframework.com/docs/img/demos/thumbnail.svg' " lazy-loading/>
-          </ion-thumbnail>
-          <div class="bottom">
-            <div class="bottom-details">
-              <p>{{item?.menuItem}}</p>
-              <p>R {{item?.price}}</p>
-            </div>
-            <div class="bottom-actions">
-              <div class="rating">
-                <li><ion-icon icon="star"></ion-icon></li>
-                <p>{{item?.rating}}</p>
-              </div>
-              <ion-row *ngIf="item?.quantity<=0" (click)="quantityPlus(item, i)">
-                <ion-text ><p>Buy </p></ion-text>
-              </ion-row>
-              <ion-row *ngIf="item?.quantity >0">
-                <ion-icon color="danger" name="remove-outline" (click)="quantityMinus(item, i)"></ion-icon>
-                <ion-text class="ion-test-center quantity">{{item?.quantity}}</ion-text>
-                <ion-icon color="success" name="add-outline" (click)="quantityPlus(item, i)"></ion-icon>
-              </ion-row>
-            </div>
-          </div>
+          <app-squareblocks 
+          [item]="item" 
+          [i]="i" 
+          (add)="quantityPlus($event)"
+          (minus)="quantityMinus($event)"
+          > 
+          </app-squareblocks>
         </div>
-       
       </div>
     </ion-item>
   </ion-list>
@@ -49,7 +34,7 @@
         <p>Extra changes may Apply</p>
       </ion-text>
       <ion-button slot="end" (click)="viewCart()">
-        <ion-icon slot="end" name="basket-outline"></ion-icon> Pay
+        <ion-icon slot="end" name="basket-outline"></ion-icon> View Cart
       </ion-button>
     </ion-toolbar>
   </ion-footer>
