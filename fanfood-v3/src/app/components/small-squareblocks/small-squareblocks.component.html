@@ -1,0 +1,19 @@
+<div class="ContainerFoodTruck">
+  <!-- <div>
+    <ion-thumbnail [routerLink]="['/', 'trucks', '1' ]">
+      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+    </ion-thumbnail>
+    <ion-text>hello</ion-text>
+  </div> -->
+  <div>
+    <ion-thumbnail >
+      <img alt="Silhouette of mountains" [src]="item?.cover " />
+    </ion-thumbnail>
+    <ion-text *ngIf="item?.foodCategory; else useName">{{item?.foodCategory}}</ion-text>
+    <ng-template #useName><ion-text>{{item?.name}}</ion-text></ng-template>
+
+  </div>
+</div>
+  
+  
+ 

@@ -1,0 +1,16 @@
+.food-header{ 
+    display: flex;
+    flex-direction: column;
+    color: white;
+    img{}
+    .food-details{
+        position: absolute;bottom:0;padding: 1%;
+        .food-details-label{
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 2%;
+        }
+
+    }
+
+}

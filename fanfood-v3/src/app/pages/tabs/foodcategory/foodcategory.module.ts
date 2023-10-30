@@ -8,6 +8,7 @@ import { FoodcategoryPageRoutingModule } from './foodcategory-routing.module';
 
 import { FoodcategoryPage } from './foodcategory.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { TabsPageModule } from 'src/app/tabs/tabs.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FormsModule,
     IonicModule,
     FoodcategoryPageRoutingModule, 
-    ComponentsModule
+    ComponentsModule,
+    TabsPageModule,
+    
     
   ],
   declarations: [FoodcategoryPage]

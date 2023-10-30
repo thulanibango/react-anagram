@@ -1,26 +1,30 @@
-<ion-thumbnail>
-  <img alt="Silhouette of mountains"
-    [src]="item?.cover ? item?.cover : 'https://ionicframework.com/docs/img/demos/thumbnail.svg' " lazy-loading />
-</ion-thumbnail>
-<div class="bottom">
-  <div class="bottom-details">
-    <p>{{item?.menuItem}}</p>
-    <p>R {{item?.price}}</p>
-  </div>
-  <div class="bottom-actions">
-    <div class="rating">
-      <li><ion-icon icon="star"></ion-icon></li>
-      <p>{{item?.rating}}</p>
+
+<!-- <div class="block-container" *ngIf="item?.category ==='popular'"> -->
+<div class="block-container" >
+  <ion-thumbnail >
+    <img alt="Silhouette of mountains"
+      [src]="item?.cover ? item?.cover : 'https://ionicframework.com/docs/img/demos/thumbnail.svg' " lazy-loading  (click)="toFoodDetail(item?.uid)"/>
+  </ion-thumbnail>
+  <div class="bottom">
+    <div class="bottom-details">
+      <p>{{item?.menuItem}} </p>
+      <p *ngIf="item?.btnText === 'Buy'">R {{item?.price}}</p>
     </div>
-    <ion-row *ngIf="item?.quantity<=0" (click)="quantityPlus(i)">
-      <ion-text>
-        <p>Buy </p>
-      </ion-text>
-    </ion-row>
-    <ion-row *ngIf="item?.quantity >0">
-      <ion-icon color="danger" name="remove-outline" (click)="quantityMinus(i)"></ion-icon>
-      <ion-text class="ion-test-center quantity">{{item?.quantity}}</ion-text>
-      <ion-icon color="success" name="add-outline" (click)="quantityPlus(i)"></ion-icon>
-    </ion-row>
+    <div class="bottom-actions">
+      <div class="rating" *ngIf="item?.rating<=0">
+        <ion-icon icon="star"></ion-icon>
+        <p>{{item?.rating}}</p>
+      </div>
+      <ion-row *ngIf="item?.quantity<=0" (click)="quantityPlus(i)">
+        <ion-text>
+          <p>{{item?.btnText}}</p>
+        </ion-text>
+      </ion-row>
+      <ion-row *ngIf="item?.quantity >0 && item?.btnText === 'Buy'">
+        <ion-icon color="danger" name="remove-outline" (click)="quantityMinus(i)"></ion-icon>
+        <ion-text class="ion-test-center quantity">{{item?.quantity}}</ion-text>
+        <ion-icon color="success" name="add-outline" (click)="quantityPlus(i)"></ion-icon>
+      </ion-row>
+    </div>
   </div>
 </div>

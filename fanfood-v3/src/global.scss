@@ -32,3 +32,10 @@ ion-thumbnail {cursor: pointer;}
 .borderBottom {
     border: 2px solid red;
 }
+.ContainerFoodTruck {
+    margin-top: 5%;
+    display: grid;
+    grid-template-rows: repeat(2, 110px);
+    grid-template-columns: repeat(3, 3fr);
+    grid-gap: 20px;
+}

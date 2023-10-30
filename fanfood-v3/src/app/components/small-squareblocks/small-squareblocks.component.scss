@@ -1,0 +1,15 @@
+
+    div {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        ion-thumbnail {
+            justify-content: center;
+            display: flex;
+            --size: 100px;
+            --border-radius: 14px;
+        }
+    }

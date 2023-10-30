@@ -8,12 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TrucksPage implements OnInit {
 
-  data : any = {}
+  respFood : any 
   id : any
-  trucks:any [] = [
-    {id:1, name:"Madlamini", img:"./../../../../assets/burger1.jpeg", rating:"3"},
-    {id:2, name:"Mamqwathi", img:"./../../../../assets/burger2.jpeg", rating:"3"},
-    {id:3, name:"Mazotsho", img:"./../../../../assets/burger3.jpeg", rating:"3"},
+   paramId:any
+  food:any [] = [
+    {fid:1, name:"Cheese Burger", cover:"./../../../../assets/burger1.jpeg", rating:3,truckUnder:'2',category:'popular', foodCategory:'burger'},
+    {fid:2, name:"Beef Pizza", cover:"./../../../../assets/burger2.jpeg", rating:3,truckUnder:'3',category:'popular',foodCategory:'Pizza'},
+    {fid:3, name:"Corn dog", cover:"./../../../../assets/burger3.jpeg", rating:3,truckUnder:'2',category:'popular', foodCategory:'Hotdogs'},
   ]
 
     
@@ -23,13 +24,18 @@ export class TrucksPage implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap=>{
       console.log("data", paramMap)
+      this.paramId = paramMap.get('truckId');
+      console.log(this.paramId)
+      this.respFood = this.food.filter((x:any)=>x.truckUnder == this.paramId);
+      console.log(this.respFood)
+
     })
   }
 
-    geFoodItem(){
-    this.data = {}
-    this.data = this.trucks.filter(x=> x.uid===this.id)
-    console.log(this.data)
+  geFoodItem(){
+    // this.data = {}
+    this.respFood = this.food.filter(x=> x.uid===this.id)
+    console.log(this.respFood)
   }
 
 

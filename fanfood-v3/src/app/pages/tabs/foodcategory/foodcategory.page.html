@@ -2,30 +2,21 @@
   <ion-toolbar>
     <ion-title>{{data[0]?.restName}}</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+      <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" >
   <app-loading-trucks *ngIf="isLoading"></app-loading-trucks>
-
-  <ion-list>
-    <ion-item>
-      <div class="grid-container-two">
-        <div class="grid-item-two" *ngFor="let item of items; let i=index;">
-          <app-squareblocks 
-          [item]="item" 
-          [i]="i" 
-          (add)="quantityPlus($event)"
-          (minus)="quantityMinus($event)"
-          > 
-          </app-squareblocks>
-        </div>
-      </div>
-    </ion-item>
-  </ion-list>
-  
+  <ion-grid>
+    <ion-header>Popular Food </ion-header>
+    <ion-row *ngIf="respFood.length > 0">
+      <app-squareblocks *ngFor="let item of respFood; let i=index;" [item]="item" [i]="i" (add)="quantityPlus($event)"
+        (minus)="quantityMinus($event)">
+      </app-squareblocks>
+    </ion-row>
+  </ion-grid>
   <ion-footer *ngIf="cartData?.totalItem > 0" >
     <ion-toolbar color="primary">
       <ion-label>{{cartData?.totalItem}} Item<span *ngIf="cartData?.totalItem >  1">s</span> |

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-squareblocks',
@@ -13,9 +14,17 @@ export class SquareblocksComponent  implements OnInit {
 @Output() minus: EventEmitter<any> =new EventEmitter ();
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
+  toFoodDetail(id:any){
+    // console.log("clicked")
+    
+      this.router.navigate(['/food-details', id]);
+
+    }
 
   quantityPlus(index:any){
     index= this.i
@@ -25,8 +34,6 @@ export class SquareblocksComponent  implements OnInit {
   quantityMinus(index:any){
     index= this.i
     this.minus.emit(index);
-
-
   }
 
 }

@@ -2,91 +2,30 @@
   <ion-toolbar>
     <ion-title>Street Chef Food Truck</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+      <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">food</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
-  <ion-item>
-    <div class="grid-container">
-        <div class="grid-item" [routerLink]="['/', 'foodcategory', '1' ]">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-
-        </div>
-        <div class="grid-item">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-        </div>
-        <div class="grid-item">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-        </div>
-        <div class="grid-item">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-        </div>
-        <div class="grid-item">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-        </div>
-    </div>
-  </ion-item>
-  <ion-list>
-    <ion-item>
-      <div class="grid-container-two">
-        <div class="grid-item-two">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-        </div>
-        <div class="grid-item-two">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-        </div>
-        <div class="grid-item-two">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-        </div>
-        <div class="grid-item-two">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-        </div>
-        <div class="grid-item-two">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-        </div>
-        <div class="grid-item-two">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-        </div>
-        <div class="grid-item-two">
-          <ion-thumbnail>
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-        </div>
+  <ion-grid>
+    <ion-row>
+      <ion-header> Food Categories</ion-header>
+      <div class="ContainerFoodTruck" *ngIf="respFood.length > 0">
+        <app-small-squareblocks *ngFor="let food of respFood" [item]="food" [routerLink]="['/', 'foodcategory', food.foodCategory,food.fid ]"></app-small-squareblocks>
       </div>
-    </ion-item>
-  </ion-list>
-  <ion-infinite-scroll >
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-header>Popular Food </ion-header>
+    <ion-row *ngIf="respFood.length > 0">
+      <app-squareblocks *ngFor="let food of respFood" [item]="food" [routerLink]="['/', 'foodcategory', food.fid]"></app-squareblocks>
+    </ion-row>
+  </ion-grid>
+  
+  
+  <!-- <ion-infinite-scroll >
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  </ion-infinite-scroll> -->
   
 
 </ion-content>

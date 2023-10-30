@@ -1,10 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title mode="md">
-      <span>Stadium name</span>
+      <span>{{respData.name}}</span>
     </ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+      <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -13,20 +13,18 @@
   <ion-row class="borderBottom">
     <div class="stadium-banner">
       <div class="big-image">
-        <img src="../../../../assets/download (3).jpeg">
+        <img src="{{respData.cover}}">
       </div>
       <div class="small-image">
-        <img src="../../../../assets/images (1).jpeg" alt="">
+        <img src="{{respData.smallImg}}" alt="">
       </div>
       <ion-label class="stadium-details">
         <ion-item class="stadium-description">
           <ion-text class="stadium-text" color="medium">
-            <p class="location-address"> <ion-icon name="location"></ion-icon>Location</p>
-            <p class="location-address"> 228 Members</p>
-            <p class="location-distance">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+            <p class="location-address"> <ion-icon name="location"></ion-icon>{{respData.stadiumLocation}}</p>
+            <p class="location-address"> {{respData.members}} members</p>
+            <p class="location-distance">{{respData.description}}</p>
           </ion-text>
-          <!-- <ion-text color="primary">
-          </ion-text> -->
         </ion-item>
         <ion-button class="chat-btn" shape="round">Join </ion-button>
       </ion-label> 
@@ -35,45 +33,15 @@
 <ion-grid>
   <ion-header>Food Trucks</ion-header>
   <ion-row>
-    <ion-col>
-      <ion-thumbnail [routerLink]="['/', 'trucks', '1' ]">
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-      </ion-thumbnail>
-      <ion-text>hello</ion-text>
-    </ion-col>
-    <ion-col>
-      <ion-thumbnail [routerLink]="['/', 'trucks', '2' ]">
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-      </ion-thumbnail>
-      <ion-text>hello</ion-text>
-    </ion-col>
-    <ion-col>
-      <ion-thumbnail>
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-      </ion-thumbnail>
-      <ion-text>hello</ion-text>
-    </ion-col>
+    <div class="ContainerFoodTruck" *ngIf="respTrucks.length > 0">
+      <app-small-squareblocks *ngFor="let truck of respTrucks"  [item]="truck" [routerLink]="['/', 'truck', truck.tid ]" ></app-small-squareblocks> 
+    </div>
   </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-thumbnail>
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-      </ion-thumbnail>
-      <ion-text>hello</ion-text>
-    </ion-col>
-    <ion-col>
-      <ion-thumbnail>
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-      </ion-thumbnail>
-      <ion-text>hello</ion-text>
-    </ion-col>
-    
-    <ion-col>
-      <ion-thumbnail>
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-      </ion-thumbnail>
-      <ion-text>hello</ion-text>
-    </ion-col>
+</ion-grid>
+<ion-grid>
+  <ion-header>Popular Food trucks</ion-header>
+  <ion-row *ngIf="respTrucks.length > 0">
+    <app-squareblocks *ngFor="let truck of respTrucks" [item]="truck" [routerLink]="['/', 'truck', truck.tid ]"></app-squareblocks>
   </ion-row>
 </ion-grid>
 

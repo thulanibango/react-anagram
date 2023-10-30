@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>cart</ion-title>
+    <ion-button slot="start" *ngIf="urlCheck && urlCheck !=='tabs' ">
+      <ion-back-button [defaultHref]="getPreviousUrl()"></ion-back-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" [src]="item?.cover ? item?.cover : 'https://ionicframework.com/docs/img/demos/thumbnail.svg' " lazy-loading />
+      </ion-thumbnail>
+      <div class="deliveryNotice">
+        <ion-label>Estimated time of Pickup</ion-label>
+        <ion-label>45 minutes</ion-label>
+      </div>
+    </ion-item>
+  </ion-card>
+  <br>
+  <app-cart-list *ngFor="let cart of cartInformation.items; let i=index;" [item]="cart"  (add)="quantityPlus($event)"
+        (minus)="quantityMinus($event)"></app-cart-list>
+  <div class="totalPay">
+      <ion-label>Total: </ion-label>
+      <ion-label>R {{cartInformation.grandTotal}}</ion-label>
+  </div>
+</ion-content>

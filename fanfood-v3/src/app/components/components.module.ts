@@ -6,15 +6,16 @@ import { LoadingStadiumComponent } from './loading-stadium/loading-stadium.compo
 import { EmptyScreenComponent } from './empty-screen/empty-screen.component';
 import { SquareblocksComponent } from './squareblocks/squareblocks.component';
 import { LoadingTrucksComponent } from './loading-trucks/loading-trucks.component';
+import { SmallSquareblocksComponent } from './small-squareblocks/small-squareblocks.component';
 
 
 
 @NgModule({
-  declarations: [StadiumComponent, LoadingStadiumComponent,EmptyScreenComponent, SquareblocksComponent, LoadingTrucksComponent ],
+  declarations: [StadiumComponent, LoadingStadiumComponent,EmptyScreenComponent, SquareblocksComponent, LoadingTrucksComponent, SmallSquareblocksComponent ],
   imports: [
     IonicModule,
     CommonModule
   ],
-  exports:[StadiumComponent, LoadingStadiumComponent, EmptyScreenComponent, SquareblocksComponent, LoadingTrucksComponent]
+  exports:[StadiumComponent, LoadingStadiumComponent, EmptyScreenComponent, SquareblocksComponent, LoadingTrucksComponent, SmallSquareblocksComponent]
 })
 export class ComponentsModule { }

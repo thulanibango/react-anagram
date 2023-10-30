@@ -1,0 +1,30 @@
+ion-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+
+    width: 100%;
+    align-items: center;
+    padding:10px 5px;
+
+    .list-contents {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-left: 3%;
+        align-items: center;
+        width: 80%;
+
+        p {
+            margin-left: 5%;
+            color: var(--ion-color-primary)
+        }
+
+        ion-label {
+            margin-right: 10%;
+            display: inline;
+        }
+
+
+    }
+}

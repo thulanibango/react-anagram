@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -16,19 +16,20 @@ const routes: Routes = [
         loadChildren: () => import('../pages/stadiums/stadiums.module').then(m => m.StadiumsPageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../pages/tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'cart',
+        loadChildren: () => import('../pages/cart/cart.module').then(m => m.CartPageModule)
       },
+      
       {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: '/home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/home',
+    redirectTo: '/home',
     pathMatch: 'full'
   }
 ];

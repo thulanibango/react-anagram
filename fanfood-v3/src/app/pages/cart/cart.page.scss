@@ -1,0 +1,10 @@
+.deliveryNotice{ display: flex;flex-direction: column;}
+ion-content{
+    .totalPay{ margin-top: 5%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        
+    }
+}

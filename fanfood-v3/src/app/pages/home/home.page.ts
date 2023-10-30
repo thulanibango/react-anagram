@@ -11,7 +11,7 @@ export class Home implements OnInit{
   constructor() { }
   
   banners: any[]=[];
-  stadium: any[]=[];
+  stadiumData: any[]=[];
   isLoading: boolean=false
   ngOnInit(){
     this.isLoading = true
@@ -22,11 +22,12 @@ export class Home implements OnInit{
       {uid:'3',banner: './../../../assets/download (3).jpeg'}
     ];
     
-    this.stadium=[
-      {uid:'1',cover:'./../../../assets/images.jpeg', name:'Moses Mabhida', stadiumLocation:'Durban, KZN', distance:1.5},
-      {uid:'2',cover:'./../../../assets/download (3).jpeg', name:'Royal bfk', stadiumLocation:'Free State, ', distance:20.5},
-      {uid:'3',cover:'./../../../assets/download (3).jpeg', name:'Royal bfk', stadiumLocation:'Free State, ', distance:20.5}
+    this.stadiumData=[
+      {sid:1,cover:'./../../../assets/images.jpeg',smallImg:"./../../../assets/images.jpeg" ,name:'Moses Mabhida', stadiumLocation:'Durban, KZN', distance:1.5, description:"lorem6 lorem", members:234},
+      {sid:2,cover:'./../../../assets/download (3).jpeg',smallImg:"./../../../assets/images.jpeg" , name:'Royal bfk', stadiumLocation:'Free State, ', distance:20.5, description:"lorem6 lorem", members:234},
+      {sid:3,cover:'./../../../assets/download (3).jpeg',smallImg:"./../../../assets/images.jpeg" , name:'Royal bfk', stadiumLocation:'Free State, ', distance:20.5, description:"lorem6 lorem", members:234}
     ];
+    
     this.isLoading = false
     }, 3000)
     

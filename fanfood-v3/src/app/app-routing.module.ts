@@ -11,12 +11,24 @@ const routes: Routes = [
     loadChildren: () => import('./pages/tabs/items/items.module').then( m => m.ItemsPageModule)
   },
   {
-    path: 'trucks/:truckId',
+    path: 'truck/:truckId',
     loadChildren: () => import('./pages/tabs/trucks/trucks.module').then( m => m.TrucksPageModule)
   },
   {
-    path: 'foodcategory/:menuId',
+    path: 'foodcategory/:foodCategory/:foodId',
     loadChildren: () => import('./pages/tabs/foodcategory/foodcategory.module').then( m => m.FoodcategoryPageModule)
+  },
+  {
+    path: 'food-details/:foodId',
+    loadChildren: () => import('./pages/tabs/food-details/food-details.module').then( m => m.FoodDetailsPageModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./pages/cart/cart.module').then( m => m.CartPageModule)
+  },
+  {
+    path: 'food-details',
+    loadChildren: () => import('./pages/tabs/food-details/food-details.module').then( m => m.FoodDetailsPageModule)
   }
 ];
 @NgModule({

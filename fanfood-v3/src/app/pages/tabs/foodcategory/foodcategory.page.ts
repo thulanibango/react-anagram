@@ -13,77 +13,109 @@ export class FoodcategoryPage implements OnInit {
   isLoading: boolean = false
   cart: any
   storeData : any
+  respFood:any
   items : any= [ 
-    {uid:'1',cover:'./../../../../assets/burger1.jpeg', menuItem:'burger1', restName: 'burgerjoint', category: 'burgers', price: 30.2, rating:'0', quantity:0},
-      {uid:'2',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '0', quantity:0},
-      {uid:'3',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '0', quantity:0},
-      {uid:'4',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:0},
-      {uid:'5',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:0},
-      {uid:'6',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2', price: 30.2, rating: '2', quantity:0},
-      {uid:'7',cover:'./../../../../assets/burger3.jpeg', menuItem:'burger1', restName: 'burgerjoint', category: 'burgers3', price: 30.2, rating: '3', quantity:0}
+    {uid:'1',cover:'./../../../../assets/burger1.jpeg', menuItem:'burger1', restName: 'burgerjoint', category: 'burger', price: 30.2, rating:'0', quantity:0, btnText: "Buy"},
+      {uid:'2',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burger', price: 30.2, rating: '0', quantity:0, btnText: "Buy"},
+      {uid:'3',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'Pizza', price: 312.2, rating: '0', quantity:0, btnText: "Buy"},
+      {uid:'4',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'Pizza', price: 1.2, rating: '2', quantity:0, btnText: "Buy"},
+      {uid:'5',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'Hotdog', price: 30.2, rating: '2', quantity:0, btnText: "Buy"},
+      {uid:'6',cover:'./../../../../assets/burger2.jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'Hotdog', price: 30.2, rating: '2', quantity:0, btnText: "Buy"},
+      {uid:'7',cover:'./../../../../assets/burger3.jpeg', menuItem:'burger1', restName: 'burgerjoint', category: 'burger', price: 30.2, rating: '3', quantity:0, btnText: "Buy"}
   ];
 
   resturants :any[]=
     [
-      {uid:'1',cover:'', menuItem:'burger1', restName: 'burgerjoint', category: 'burgers'},
-      {uid:'2',cover:'./../../../assets/download (3).jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burgers2'},
-      {uid:'3',cover:'./../../../assets/download (3).jpeg', menuItem:'burger1', restName: 'burgerjoint', category: 'burgers3'}
+      {uid:'1',cover:'./../../../assets/download (3).jpeg', menuItem:'burger1', restName: 'burgerjoint', category: 'Pizza'},
+      {uid:'2',cover:'./../../../assets/download (3).jpeg', menuItem:'burger2', restName: 'burgerjoint', category: 'burger'},
+      {uid:'3',cover:'./../../../assets/download (3).jpeg', menuItem:'burger1', restName: 'burgerjoint', category: 'burger'}
     ]
   
   private route: ActivatedRoute;
   private navCtrl: NavController;
   private router : Router;
   id : any
+  foodCategory: any
 
   constructor(private activatedRoute: ActivatedRoute, private navcontroller: NavController, private customRouter: Router) {
     this.navCtrl = navcontroller;
-   this.route = activatedRoute;
-   this.router = customRouter
+    this.route = activatedRoute;
+    this.router = customRouter
    }
 
   ngOnInit() {
     this.route.paramMap.subscribe(paramMap =>{
       console.log("data:"  ,paramMap )
-      if(!paramMap.has('menuId')){
+      if(!paramMap.has('foodId')){
         this.navCtrl.back();
       }
-      this.id = paramMap.get('menuId');
+      this.id = paramMap.get('foodId');
+      this.foodCategory = paramMap.get('foodCategory')
       console.log(this.id)
     })
-    this.geFoodItem();
-    console.log(this.geFoodItem())
-  }
+    this.respFood = this.geFoodItem();
+    console.log(this.respFood);
+  };
+
+  
 
   getCart(){
     // return Preferences.get({key:"cart"});
     return localStorage.getItem('cart');
 
   }
-  async geFoodItem(){
-    this.isLoading =true;
-    this.data = {}
-    this.cartData ={}
-    this.storeData={}
-    setTimeout(async ()=>{
-      this.data = this.resturants.filter(x=> x.uid===this.id)
-      // this.items = this.resturants.filter(x=> x.uid ===this.id)
-      console.log(this.data)
-      this.cart = await this.getCart()
-      let jsonCart = JSON.parse(this.cart)
-      console.log(jsonCart)
-      if(jsonCart?.items){
-          // this.storeData =JSON.parse(cart.items);
-          this.storeData = jsonCart?.items
-          console.log(this.storeData)
-          // if(this.id ===  this.storeData.Map((x)=> x.id) && this.items.length > 0){
-          //   this.items.forEach
+  
 
-          // }
-      }
-      this.isLoading =false;
-      return this.data ;
-    }, 3000)
+geFoodItem() {
+  this.isLoading = true;
+  this.cartData = {};
+  this.storeData = {};
+  try {
+    this.data = this.items.filter((x:any) => x.category == this.foodCategory);
+    // this.cart =  this.getCart();
+    // let jsonCart = JSON.parse(this.cart);
+    // console.log(jsonCart);
+    // if (jsonCart?.items) {
+    //   this.storeData = jsonCart.items;
+    //   console.log(this.storeData);
+    // }
+    // console.log(this.data);
+    this.isLoading = false;
+    return this.data;
+  } catch (error) {
+    // Handle errors, e.g., logging or displaying an error message.
+    console.error(error);
   }
+}
+
+  // async geFoodItem(){
+  //   this.isLoading =true;
+  //   this.cartData ={}
+  //   this.storeData={}
+  //   setTimeout(async ()=>{
+  //     this.data = this.resturants.filter(x=> x.category==this.foodCategory)
+  //     console.log(this.data)
+  //     // this.items = this.resturants.filter(x=> x.uid ===this.id)
+  //     console.log(this.data)
+  //     this.cart = await this.getCart()
+  //     let jsonCart = JSON.parse(this.cart)
+  //     console.log(jsonCart)
+  //     if(jsonCart?.items){
+  //         // this.storeData =JSON.parse(cart.items);
+  //         this.storeData = jsonCart?.items
+  //         console.log(this.storeData)
+  //         // if(this.id ===  this.storeData.Map((x)=> x.id) && this.items.length > 0){
+  //         //   this.items.forEach
+
+  //         // }
+  //     }
+  //     this.isLoading =false;
+  //     console.log(this.data)
+  //     return this.data ;
+  //   }, 3000)
+  //    console.log(this.data) ;
+
+  // }
 
 
   quantityPlus(index:any){
@@ -122,10 +154,8 @@ export class FoodcategoryPage implements OnInit {
   calculate(){
     console.log(this.items);
     this.cartData.items =[];
-
     let item = this.items.filter((x: { quantity: number; })=> x.quantity >0)
     console.log("added", item);
-    
     this.cartData.items =item;
     this.cartData.totalPrice = 0;
     this.cartData.totalItem = 0; //holds number of items
@@ -159,8 +189,11 @@ export class FoodcategoryPage implements OnInit {
   async viewCart(){
     if(this.cartData.items && this.cartData.items.length > 0 ){
       this.saveToCart()
+      console.log(this.router.url)
       this.router.navigate([this.router.url + '/cart'])
 
     }
   }
+ 
+
 }
